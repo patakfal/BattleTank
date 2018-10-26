@@ -1,2 +1,2 @@
 # BattleTank
-Battle Tank game creation with Udemy with Unreal Engine
+Battle Tank game creation course with Udemy with Unreal Engine
