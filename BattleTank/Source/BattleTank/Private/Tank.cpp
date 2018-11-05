@@ -34,14 +34,14 @@ void ATank::Tick( float DeltaTime )
 }
 
 // Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void ATank::SetupPlayerInputComponent(class UInputComponent* Inputcomponent)
 {
-	Super::SetupPlayerInputComponent(InputComponent);
+	Super::SetupPlayerInputComponent(Inputcomponent);
 
 }
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
