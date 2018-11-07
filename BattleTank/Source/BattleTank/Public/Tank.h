@@ -2,11 +2,13 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
 #include "GameFramework/Pawn.h"
+#include "BattleTank.h"
+#include "TankBarrel.h"
+#include "Projectile.h"
+#include "TankAimingComponent.h"
 #include "Tank.generated.h" // Put new includes above
 
-class UTankBarrel;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -25,6 +27,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 	void Fire();
 
+ 
+
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
@@ -37,7 +41,17 @@ private:
 	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* Inputcomponent) override;
-	
+
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 8000; // TODO find sensible default
+	float LaunchSpeed = 8000;
+	
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	//Local refrerence to Barrel
+	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeInSeconds = 3;
+
+	double LastFireTime = 0;
 };
