@@ -7,6 +7,16 @@ public class BattleTank : ModuleRules
 	public BattleTank(ReadOnlyTargetRules Target) : base (Target)
 	{
  
+		// Make sure UBT reminds us of how to keep the project IWYU compliant
+        bEnforceIWYU = true;
+
+        //Enable IWYU but keep our PrivatePCH in use
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+        //Our PrivatePCH that we want to globally #include
+        PrivatePCHHeaderFile = "BattleTank.h";
+
+
  		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
